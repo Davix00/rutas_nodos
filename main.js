@@ -32,7 +32,7 @@ function initMap() {
     {
       nombre: "Casita de David",
       latitud: 19.062275,
-      lognitud: -98.188391,
+      longitud: -98.188391,
     },
   ];
   
