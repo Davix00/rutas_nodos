@@ -1,6 +1,8 @@
 let mapa;
 
+// Funcion initMap para especificar todas las caracteristicas del mapa y crearlo.
 function initMap() {
+  // Arreglo de los lugares que se van a mostrar al principio.
   const lugares = [
     {
       nombre: "Universidad Tecnológica de Puebla",
@@ -22,54 +24,70 @@ function initMap() {
       latitud: 19.096620535720444,
       longitud: -98.23356690237293,
     },
+    {
+      nombre: "Casita de Perla",
+      latitud: 18.95295,
+      longitud: -98.2433,
+    },
+    {
+      nombre: "Casita de David",
+      latitud: 19.062275,
+      lognitud: -98.188391,
+    },
   ];
-
+  
+  // Creamos un nuevo mapa.
   mapa = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 19.044774, lng: -98.198309 }, // Centro en Puebla
-    zoom: 12, // Zoom más cercano para ver los lugares con detalle
+    center: { lat: 19.044774, lng: -98.198309 }, // Cordenadas centrales del mapa {Centro de Puebla}.
+    zoom: 10, // Zoom del mapa.
   });
 
-  // Agregar marcadores para los lugares
   for (const lugar of lugares) {
     agregarMarcador(lugar.nombre, lugar.latitud, lugar.longitud);
   }
 }
 
-// Agregar un marcador en el mapa
+// Funcion para creear los marcadores.
 function agregarMarcador(nombre, latitud, longitud) {
   new google.maps.Marker({
-    position: { lat: latitud, lng: longitud },
-    map: mapa,
-    title: nombre,
-    draggable: true,
-    animation: google.maps.Animation.DROP,
+    position: { lat: latitud, lng: longitud }, // Coordenadas del marcador.
+    map: mapa, // El lugar a donde se va añadir.
+    title: nombre, // Nombre del marcador.
+    draggable: true, // Propiedad para que sea arrastrable.
+    animation: google.maps.Animation.DROP
   });
 }
 
-// Trazar una ruta entre dos puntos
+// Trazar una ruta entre dos puntos.
 function trazarRuta() {
+  // Treamos los lugares al que le vamos a crear la ruta.
   const origen = document.getElementById("origenInput").value;
   const destino = document.getElementById("destinoInput").value;
+  
 
+  // Servicio que solicita las rutas y las calcula.
   const directionsService = new google.maps.DirectionsService();
+  // Servicio que muestra las rutas en el mapa.
   const directionsRenderer = new google.maps.DirectionsRenderer();
 
+  // Establecemos el lugar donde se van a renderizar las rutas.
   directionsRenderer.setMap(mapa);
-
+  
+  // Le damos las direcciones para que sean calculadas.
   directionsService.route(
     {
       origin: origen,
       destination: destino,
-      travelMode: "DRIVING",
+      travelMode: "DRIVING", // Tipo de ruta que se va a calcular {WALKING', 'BICYCLING', o 'TRANSIT}.
     },
-    (response, status) => {
+    (response, status) => { // Evaluamos el http status code.
       if (status === "OK") {
-        directionsRenderer.setDirections(response);
+        directionsRenderer.setDirections(response); // Rendirezamos la ruta.
       } else {
-        window.alert("No se pudo calcular la ruta: " + status);
+        window.alert("No se pudo calcular la ruta:" + status); // Mostramos un mensjae de error. 
       }
     }
   );
 }
 
-initMap()
+initMap(); //Inicializamos la funcion que creea el mapa.
