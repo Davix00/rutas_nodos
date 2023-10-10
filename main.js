@@ -88,6 +88,8 @@ function trazarRuta() {
       }
     }
   );
+  document.getElementById("origenInput").value = "";
+  document.getElementById("destinoInput").value = "";
 }
 
 initMap(); //Inicializamos la funcion que creea el mapa.
