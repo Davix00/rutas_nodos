@@ -49,13 +49,19 @@ function initMap() {
 
 // Funcion para creear los marcadores.
 function agregarMarcador(nombre, latitud, longitud) {
-  new google.maps.Marker({
+  const marker = new google.maps.Marker({
     position: { lat: latitud, lng: longitud }, // Coordenadas del marcador.
     map: mapa, // El lugar a donde se va añadir.
     title: nombre, // Nombre del marcador.
     draggable: true, // Propiedad para que sea arrastrable.
-    animation: google.maps.Animation.DROP
+    animation: google.maps.Animation.DROP,
+    icon: {
+      url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png', // URL de la imagen del marcador
+      scaledSize: new google.maps.Size(50, 50), // Tamaño del marcador
+    }
   });
+  //new google.maps.Marker({
+
 }
 
 // Trazar una ruta entre dos puntos.
@@ -68,7 +74,10 @@ function trazarRuta() {
   // Servicio que solicita las rutas y las calcula.
   const directionsService = new google.maps.DirectionsService();
   // Servicio que muestra las rutas en el mapa.
-  const directionsRenderer = new google.maps.DirectionsRenderer();
+  const directionsRenderer = new google.maps.DirectionsRenderer({
+    polylineOptions: {
+      strokeColor: '#aa6581' // Cambia '#FF0000' al color que desees para la línea de la ruta
+    },});
 
   // Establecemos el lugar donde se van a renderizar las rutas.
   directionsRenderer.setMap(mapa);
@@ -82,7 +91,12 @@ function trazarRuta() {
     },
     (response, status) => { // Evaluamos el http status code.
       if (status === "OK") {
-        directionsRenderer.setDirections(response); // Rendirezamos la ruta.
+        directionsRenderer.setDirections(response); // Renderizamos la ruta.
+
+        // Obtenemos la duración del viaje desde la respuesta.
+        const duration = response.routes[0].legs[0].duration.text;
+
+        document.getElementById("tiempoViaje").textContent = "Tiempo estimado: " + duration; // Rendirezamos la ruta.
       } else {
         window.alert("No se pudo calcular la ruta:" + status); // Mostramos un mensjae de error. 
       }

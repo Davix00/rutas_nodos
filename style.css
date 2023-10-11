@@ -1,4 +1,55 @@
-#map {
-  height: 400px;
-  width: 100%;
+body{
+  background-color: #faf8f6 !important;
 }
+/*Posicionamiento del título*/
+.display-6{
+  margin-top: 20px;
+  color: #f5f1f7;
+  font-weight: bold;
+  background-color: #906090;
+}
+h1{
+  font-size: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* Tipo de fuente */
+  text-align: center;
+  /* Alineación del texto */
+  margin-top: 20px;
+  /* Margen superior */   
+  font-weight: bold !important;
+  
+}
+/*Color y transparencia del contenedor donde se escribe la dirección*/
+.form-control{
+  color: rgb(223, 184, 184);
+  opacity: 0.5;
+  border-color: #ae8fba !important;
+}
+
+
+.Parametros{
+  color: #9c667d;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+.btn-p{
+  background-color: #ae8fba !important;
+  border-color: #ae8fba !important;
+  
+}
+.btn-p:hover{
+  font-weight: bold;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#map{
+  height: 500px !important;
+  width: 800px;
+}
+#tiempoViaje{
+  color: #906090 !important;
+  font-weight: bold;
+}
+
