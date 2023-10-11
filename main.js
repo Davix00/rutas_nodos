@@ -60,7 +60,7 @@ function agregarMarcador(nombre, latitud, longitud) {
       scaledSize: new google.maps.Size(50, 50), // Tamaño del marcador
     }
   });
-  //new google.maps.Marker({
+  
 
 }
 
@@ -76,7 +76,7 @@ function trazarRuta() {
   // Servicio que muestra las rutas en el mapa.
   const directionsRenderer = new google.maps.DirectionsRenderer({
     polylineOptions: {
-      strokeColor: '#aa6581' // Cambia '#FF0000' al color que desees para la línea de la ruta
+      strokeColor: '#aa6581' // Color  para la línea de la ruta
     },});
 
   // Establecemos el lugar donde se van a renderizar las rutas.
@@ -106,4 +106,4 @@ function trazarRuta() {
   document.getElementById("destinoInput").value = "";
 }
 
-initMap(); //Inicializamos la funcion que creea el mapa.
+initMap(); //Inicializamos la funcion que crea el mapa.
