@@ -26,14 +26,14 @@ h1{
   border-color: #ae8fba !important;
 }
 
-
+/*Colores de los campos a llenar*/
 .Parametros{
   color: #9c667d;
   font-weight: bold;
   font-size: 20px;
 
 }
-
+ /*Propiedades de botones*/
 .btn-p{
   background-color: #ae8fba !important;
   border-color: #ae8fba !important;
@@ -43,7 +43,7 @@ h1{
   font-weight: bold;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+/*Visualización de mapa*/
 #map{
   height: 500px !important;
   width: 800px;
